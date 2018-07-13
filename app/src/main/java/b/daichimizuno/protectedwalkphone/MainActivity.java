@@ -115,11 +115,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                count++;
            } else {
                mPreview.stop();
-
+/*
                mSensorManager.unregisterListener(this, mArroundElectronicsSensor);
                mSensorManager.unregisterListener(this, mAccelerationSensor);
                mSensorManager.unregisterListener(this, mGyroSensor);
-
+*/
                TextView textView = findViewById(R.id.button_start);
                textView.setText("START");
                count++;
