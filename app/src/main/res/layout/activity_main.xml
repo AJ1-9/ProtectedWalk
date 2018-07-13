@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/back_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back_pic1"
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteY="25dp">
+
+    <TextView
+        android:id="@+id/text_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="450dp"
+        android:layout_marginRight="600dp"
+        android:textColor="#fff"
+        android:textSize="45dp"
+        android:fontFamily="@font/baloo"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.045" />
+
+    <Button
+        android:id="@+id/button_start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="200dp"
+        android:layout_marginTop="50dp"
+        android:alpha="80"
+        android:background="#59FFFFFF"
+        android:fontFamily="@font/baloo"
+        android:scaleX="1"
+        android:scaleY="1.9"
+        android:text="START"
+        android:textColor="#FFF"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_control2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="40dp"
+        android:layout_marginTop="50dp"
+        android:alpha="80"
+        android:background="#59FFFFFF"
+        android:fontFamily="@font/baloo"
+        android:scaleX="1"
+        android:scaleY="1.9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="516dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="50dp"
+        android:alpha="80"
+        android:background="#59FFFFFF"
+        android:fontFamily="@font/baloo"
+        android:scaleX="6"
+        android:scaleY="1.9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginTop="46dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/setting" />
+
+    <LinearLayout
+        android:id="@+id/none"
+        android:layout_width="480dp"
+        android:layout_height="640dp"
+        android:layout_marginTop="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <b.daichimizuno.protectedwalkphone.camera.CameraSourcePreview
+            android:id="@+id/preview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <b.daichimizuno.protectedwalkphone.camera.GraphicOverlay
+                android:id="@+id/faceOverlay"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </b.daichimizuno.protectedwalkphone.camera.CameraSourcePreview>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/image_gender"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:scaleX="0.35"
+        android:scaleY="0.35"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/walker_man" />
+
+</android.support.constraint.ConstraintLayout>

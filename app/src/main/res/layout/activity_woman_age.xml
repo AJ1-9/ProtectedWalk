@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/back_woman"
+    android:background="@drawable/back_pic1"
+    tools:context=".WomanAgeActivity">
+
+    <ImageView
+        android:id="@+id/imageViewWoman"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleX="0.2"
+        android:scaleY="0.2"
+        app:srcCompat="@drawable/walker_woman" />
+
+    <com.sdsmdg.harjot.crollerTest.Croller
+        android:id="@+id/croller_woman"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:layout_margin="20dp"
+        app:back_circle_color="#00000000"
+        app:indicator_color="#4F1E55"
+        app:indicator_width="20"
+        app:is_continuous="false"
+        app:label_color="#00000000"
+        app:main_circle_color="#00000000"
+        app:max="100"
+        app:min="0"
+        app:progress_primary_color="#4F1E55"
+        app:progress_radius="250"
+        app:progress_secondary_color="#EEEEEE"
+        app:start_offset="50" />
+
+    <TextView
+        android:id="@+id/text_woman_age"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="350dp"
+        android:height="50sp"
+        android:gravity="center"
+        android:textColor="#ffff"
+        android:fontFamily="@font/baloo"
+        android:textSize="40dp" />
+
+    <Button
+        android:id="@+id/button_woman_age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="800dp"
+        android:alpha="80"
+        android:fontFamily="@font/baloo"
+        android:background="#59FFFFFF"
+        android:radius="50dp"
+        android:text="SELECT"
+        android:textColor="#fff"
+        android:textSize="40dp" />
+
+</FrameLayout>
