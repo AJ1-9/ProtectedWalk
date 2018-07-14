@@ -9,6 +9,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.hardware.Sensor;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -43,6 +46,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static int age;
     private static int gender;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -63,7 +67,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         findViewById(R.id.back_main).setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION| View.SYSTEM_UI_FLAG_FULLSCREEN | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
 
-        // MainActivityからインテントを取得
         Intent intent = getIntent();
 
         // 性別の値を引き継ぎ (0:default 1:man 2:woman)
@@ -114,12 +117,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                textView.setText("STOP");
                count++;
            } else {
+               stopService(serviceIntent);
                mPreview.stop();
-/*
-               mSensorManager.unregisterListener(this, mArroundElectronicsSensor);
-               mSensorManager.unregisterListener(this, mAccelerationSensor);
-               mSensorManager.unregisterListener(this, mGyroSensor);
-*/
                TextView textView = findViewById(R.id.button_start);
                textView.setText("START");
                count++;
@@ -127,15 +126,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
        }
    }
 
-    private CameraSource mCameraSource = null;
 
+    private CameraSource mCameraSource = null;
     private CameraSourcePreview mPreview;
     private GraphicOverlay mGraphicOverlay;
-
     private static final int RC_HANDLE_GMS = 9001;
     // permission request codes need to be < 256
     private static final int RC_HANDLE_CAMERA_PERM = 2;
-
 
     /**
      * Handles the requesting of the camera permission.  This includes
@@ -377,11 +374,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mOverlay.remove(mFaceGraphic);
         }
     }
-
     public static int getAge(){
         return age;
     }
-
     public static int getGender(){
         return gender;
     }
