@@ -26,7 +26,7 @@ public class SensorService extends Service implements SensorEventListener2{
     private float light = 0f;
     private List<Float> gyroDataPlusList = new ArrayList<>();
     private List<Float> gyroDataMinuxList = new ArrayList<>();
-    private int gyroDataMaxNumber = 30;
+    private int gyroDataMaxNumber = 500;
     private List<String> textList = new ArrayList<>();
 
     private static boolean isWalkingForSensor = false;
@@ -122,9 +122,9 @@ public class SensorService extends Service implements SensorEventListener2{
 
             Log.d(TAG,"#onSensorChanged : Gyro : " + strTmp);
 
-            if(sensorX > 0f){
+            if(sensorX > 0f && sensorX < 1f){
                 gyroDataPlusList.add(sensorX);
-            }else{
+            }else if(sensorX > -1f && sensorX < 0f){
                 gyroDataMinuxList.add(sensorX);
             }
 
@@ -138,10 +138,14 @@ public class SensorService extends Service implements SensorEventListener2{
         }
 
         textList.add(strTmp);
-        //Utils.saveFile(this,"text.txt" ,textList);
+//        Utils.saveFile(this,"text.txt" ,textList);
+        Log.d(TAG,"Median plus :" + Utils.getMedian(gyroDataPlusList));
+        Log.d(TAG,"Median minus :" + Utils.getMedian(gyroDataMinuxList));
 
+        Log.d(TAG,"exceed : Light :"+ light);
         if(light > THRESHOLD.ARROUND_ELECTORICS){
-            if(gyroDataPlusList.size() ==  gyroDataMaxNumber && Utils.getAverageList(gyroDataPlusList) > THRESHOLD.GYRO_PLUS){
+            if(gyroDataPlusList.size() >  gyroDataMaxNumber-5 && Utils.getMedian(gyroDataPlusList) > THRESHOLD.GYRO_PLUS){
+                Log.d(TAG,"plus ok : status "+ MediaUtils.getPlayerStatus());
                 if(!MediaUtils.getPlayerStatus()){
 //                    MediaUtils.startPlayer();
                     gyroDataPlusList.clear();
@@ -152,7 +156,8 @@ public class SensorService extends Service implements SensorEventListener2{
 
                 }
             }
-            else if(gyroDataMinuxList.size() == gyroDataMaxNumber && Utils.getAverageList(gyroDataMinuxList) < THRESHOLD.GYRO_MINUX){
+            else if(gyroDataMinuxList.size() > gyroDataMaxNumber-5 && Utils.getMedian(gyroDataMinuxList) < THRESHOLD.GYRO_MINUX){
+                Log.d(TAG,"minus ok : status "+ MediaUtils.getPlayerStatus());
                 if(!MediaUtils.getPlayerStatus()){
 //                    MediaUtils.startPlayer();
                     gyroDataPlusList.clear();
