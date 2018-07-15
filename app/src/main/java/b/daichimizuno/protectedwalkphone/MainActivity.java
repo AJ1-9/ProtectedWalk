@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
            Intent intent = new Intent(this, ChoiceActivity.class);
            startActivity(intent);
 
+
        } else if (view == mStartButton) {
            if (count % 2 == 0) {
                startService(serviceIntent);
