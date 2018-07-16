@@ -6,5 +6,4 @@ public class THRESHOLD {
     public static final float GYRO_MINUX = -0.1f;
     public static final float ACCELERATION = 0;
 
-
 }

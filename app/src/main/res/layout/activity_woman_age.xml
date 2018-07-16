@@ -32,7 +32,7 @@
         app:max="100"
         app:min="0"
         app:progress_primary_color="#4F1E55"
-        app:progress_radius="250"
+        app:progress_radius="325"
         app:progress_secondary_color="#EEEEEE"
         app:start_offset="50" />
 
