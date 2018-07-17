@@ -154,6 +154,7 @@ public class SensorService extends Service implements SensorEventListener2{
 //                    Utils.saveFile(this,"test.txt",textList);
                     isWalkingForSensor = true;
 
+                    MainActivity.lockMeNow();
                 }
             }
             else if(gyroDataMinuxList.size() > gyroDataMaxNumber-5 && Utils.getMedian(gyroDataMinuxList) < THRESHOLD.GYRO_MINUX){
@@ -166,6 +167,7 @@ public class SensorService extends Service implements SensorEventListener2{
 //                    Utils.saveFile(this,"test.txt",textList);
                     isWalkingForSensor = true;
 
+                    MainActivity.lockMeNow();
                 }
             }else{
                 isWalkingForSensor = false;

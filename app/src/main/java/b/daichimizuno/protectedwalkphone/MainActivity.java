@@ -4,6 +4,8 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.admin.DevicePolicyManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -46,12 +48,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static int age;
     private static int gender;
 
+    private static DevicePolicyManager mDevicePolicyManager;
+    private static ComponentName cn=null;
+    private static Activity main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        main = this;
 
         mPreview = (CameraSourcePreview) findViewById(R.id.preview);
         mGraphicOverlay = (GraphicOverlay) findViewById(R.id.faceOverlay);
@@ -98,6 +104,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
        editor.putInt("user_gender",gender);
        editor.putInt("user_age",age);
        editor.apply();
+
+        cn=new ComponentName(this, AdminReceiver.class);
+        mDevicePolicyManager = (DevicePolicyManager)getSystemService(
+                Context.DEVICE_POLICY_SERVICE);
    }
 
    // ボタンを押したときの動作
@@ -380,5 +390,23 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
     public static int getGender(){
         return gender;
+    }
+
+    public static void lockMeNow() {
+        if (mDevicePolicyManager.isAdminActive(cn)) {
+            mDevicePolicyManager.lockNow();
+        }
+        else {
+            Intent intent=
+                    new Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN);
+            intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, cn);
+            intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION,
+                    main.getString(R.string.device_admin_explanation));
+            main.startActivity(intent);
+        }
+    }
+
+    public static Activity getActivity(){
+        return main;
     }
 }
