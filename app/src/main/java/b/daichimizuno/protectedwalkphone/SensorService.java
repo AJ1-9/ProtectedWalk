@@ -26,7 +26,7 @@ public class SensorService extends Service implements SensorEventListener2{
     private float light = 0f;
     private List<Float> gyroDataPlusList = new ArrayList<>();
     private List<Float> gyroDataMinuxList = new ArrayList<>();
-    private int gyroDataMaxNumber = 500;
+    private int gyroDataMaxNumber = 300;
     private List<String> textList = new ArrayList<>();
 
     private static boolean isWalkingForSensor = false;
@@ -56,9 +56,9 @@ public class SensorService extends Service implements SensorEventListener2{
     public void onDestroy(){
         super.onDestroy();
         Log.d(TAG,"#onDestroy");
-        mSensorManager.unregisterListener(this,mArroundElectronicsSensor);
-        mSensorManager.unregisterListener(this,mAccelerationSensor);
-        mSensorManager.unregisterListener(this,mGyroSensor);
+        //mSensorManager.unregisterListener(this,mArroundElectronicsSensor);
+        //mSensorManager.unregisterListener(this,mAccelerationSensor);
+        //mSensorManager.unregisterListener(this,mGyroSensor);
     }
 
     @Override
@@ -152,7 +152,7 @@ public class SensorService extends Service implements SensorEventListener2{
                     gyroDataMinuxList.clear();
                     textList.add("detect");
 //                    Utils.saveFile(this,"test.txt",textList);
-                    isWalkingForSensor = true;
+//                    isWalkingForSensor = true;
 
                     MainActivity.lockMeNow();
                 }
@@ -167,7 +167,7 @@ public class SensorService extends Service implements SensorEventListener2{
                     gyroDataMinuxList.clear();
                     textList.add("detect");
 //                    Utils.saveFile(this,"test.txt",textList);
-                    isWalkingForSensor = true;
+//                    isWalkingForSensor = true;
 
                     MainActivity.lockMeNow();
                 }
