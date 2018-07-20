@@ -147,7 +147,7 @@ public class SensorService extends Service implements SensorEventListener2{
             if(gyroDataPlusList.size() >  gyroDataMaxNumber-5 && Utils.getMedian(gyroDataPlusList) > THRESHOLD.GYRO_PLUS){
                 Log.d(TAG,"plus ok : status "+ MediaUtils.getPlayerStatus());
                 if(!MediaUtils.getPlayerStatus()){
-//                    MediaUtils.startPlayer();
+                    MediaUtils.startPlayer();
                     gyroDataPlusList.clear();
                     gyroDataMinuxList.clear();
                     textList.add("detect");
@@ -162,7 +162,7 @@ public class SensorService extends Service implements SensorEventListener2{
             else if(gyroDataMinuxList.size() > gyroDataMaxNumber-5 && Utils.getMedian(gyroDataMinuxList) < THRESHOLD.GYRO_MINUX){
                 Log.d(TAG,"minus ok : status "+ MediaUtils.getPlayerStatus());
                 if(!MediaUtils.getPlayerStatus()){
-//                    MediaUtils.startPlayer();
+                    MediaUtils.startPlayer();
                     gyroDataPlusList.clear();
                     gyroDataMinuxList.clear();
                     textList.add("detect");

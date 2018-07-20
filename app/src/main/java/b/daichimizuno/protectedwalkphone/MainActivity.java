@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
    }
 
    // ボタンを押したときの動作
-   public int count=0;
+   private static int count=0;
    @Override
    public void onClick(View view) {
        Intent serviceIntent = new Intent(MainActivity.this, SensorService.class);
@@ -391,6 +391,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public static int getGender(){
         return gender;
     }
+
 
     public static void lockMeNow() {
         if (mDevicePolicyManager.isAdminActive(cn)) {
